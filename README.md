@@ -34,3 +34,21 @@ then use the after patch:
 ````bash
 ./after.sh
 ````
+
+devfile for testing:
+````yaml
+apiVersion: 1.0.0
+metadata:
+  name: haskell
+components:
+  - id: eclipse/che-theia/next
+    type: cheEditor
+    cpuLimit: 1750m
+    cpuRequest: 200m
+  - preferences:
+      haskell.languageServerVariant: ghcide
+    type: chePlugin
+    id: haskell/vscode-haskell/latest
+    cpuLimit: 4001m
+    cpuRequest: 200m
+````
