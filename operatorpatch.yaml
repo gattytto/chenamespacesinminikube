@@ -1,0 +1,9 @@
+spec:
+  k8s:
+    ingressDomain: '10.0.1.147.nip.io'
+  storage: 
+    postgresPVCStorageClassName: 'eclipseche'
+    workspacePVCStorageClassName: 'eclipsechewksp'
+  server:
+    workspaceNamespaceDefault: 'chewksp'
+    allowUserDefinedWorkspaceNamespaces: true

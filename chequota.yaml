@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: default
+spec:
+  hard:
+    limits.cpu: "5999m"
+    limits.memory: 7Gi
+    limits.ephemeral-storage: 7Gi
+    requests.cpu: "1750m"
+    requests.memory: 7Gi
+    requests.storage: 15Gi
+    requests.ephemeral-storage: 7Gi
+    persistentvolumeclaims: "5"
+    pods: "100"
+    replicationcontrollers: "100"
+    services: "100"
+    secrets: "100"
+    configmaps: "100"
+---
+apiVersion: "v1"
+kind: "LimitRange"
+metadata:
+  name: "resource-limits"
+spec:
+  limits:
+    -
+      type: "Pod"
+      max:
+        cpu: "5999m"
+        memory: "7Gi"
+      min:
+        cpu: "1750m"
+        memory: "250Mi"
+    -
+      type: "Container"
+      default:
+        cpu: "5999m"
+        memory: "7Gi"
+      defaultRequest:
+        cpu: "1750m"
+        memory: "256Mi"
+
