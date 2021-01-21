@@ -13,7 +13,7 @@ chectl server:deploy -p minikube -a operator -m --che-operator-cr-patch-yaml=ope
 
 now there's the need of a patch on checluster:
 ````bash
-kubectl edit -n che checluster/eclipse-che
+kubectl edit -n eclipse-che checluster/eclipse-che
 ````
 add in relevant part:
 ````yaml
@@ -26,8 +26,8 @@ server:
 
 restart che server to apply:
 ````bash
-kubectl -n che scale deployment/che --replicas=0 && \
-kubectl -n che scale deployment/che --replicas=1
+kubectl -n eclipse-che scale deployment/che --replicas=0 && \
+kubectl -n eclipse-che scale deployment/che --replicas=1
 ````
 
 then use the after patch:
