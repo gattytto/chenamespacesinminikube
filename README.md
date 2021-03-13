@@ -8,7 +8,7 @@ to deploy first:
 after that issue:
 
 ````yaml
-chectl server:deploy -p minikube -a operator -m --che-operator-cr-patch-yaml=operatorpatch.yaml
+chectl server:deploy -p k8s -a operator -m --che-operator-cr-patch-yaml=operatorpatch.yaml -b SOME_DOMAIN_NAME --skip-kubernetes-health-check
 ````
 
 now there's the need of a patch on checluster:
