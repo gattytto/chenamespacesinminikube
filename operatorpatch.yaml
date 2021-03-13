@@ -1,6 +1,6 @@
 spec:
   k8s:
-    ingressDomain: '10.0.1.147.nip.io'
+    ingressDomain: 'SOME_DOMAIN_NAME'
   storage: 
     postgresPVCStorageClassName: 'eclipseche'
     workspacePVCStorageClassName: 'eclipsechewksp'
