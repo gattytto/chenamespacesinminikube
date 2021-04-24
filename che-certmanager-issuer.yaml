@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: che-tls-secret
+  namespace: cert-manager
+data:
+  heDdnsKey: something-base64-encoded
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: che-tls-issuer
+  namespace: cert-manager
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: emanaricua@gmail.com
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
+      name: example-issuer-account-key
+    solvers:
+    - dns01:
+        webhook:
+          groupName: dyn.dns.he.net
+          solverName: acme-he-webhook
+          config:
+            apiKeySecretRef:
+              name: che-tls-secret
+              key: "heDdnsKey"
+            email: mail
+      selector:
+        dnsZones:
+        - 'che.domain.tld'
